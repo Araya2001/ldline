@@ -18,8 +18,8 @@ static struct argp_option options[] = {
     {"showdupe", 's', 0, 0, "Shows the last duplicated ldline"},
     {"from", 'f', "CHAR NUMBER [FIRST TO COMPARE]", 0,
      "Compare from a specified character position"},
-    {"to", 't', "CHAR NUMBER [LAST TO COMPARE]", 0,
-     "Compare from a specified character position"},
+    {"to", 'c', "CHAR NUMBER [LAST TO COMPARE]", 0,
+     "Compare a specified amount of characters"},
     {0}};
 
 /* Used by main to communicate with parse_opt. */
@@ -93,9 +93,6 @@ int main(int argc, char *argv[]) {
      be reflected in arguments. */
   argp_parse(&argp, argc, argv, 0, 0, &arguments);
   filename = arguments.arg[0];
-
-  printf("Arg: %s\nFrom: %d\n To: %d\n", filename, arguments.from,
-         arguments.to);
 
   if (arguments.erasedupe == 1) {
     readLineErased(filename, arguments.from, arguments.to);
