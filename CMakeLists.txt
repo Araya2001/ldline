@@ -9,9 +9,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_library(lib_ldline src/lib/libldline.c ${HEADERS})
-target_include_directories(lib_ldline PRIVATE ${lib})
+target_include_directories(lib_ldline PRIVATE ${src/lib})
 add_executable(ldline ${SOURCES} ${HEADERS})
-target_include_directories(ldline PRIVATE ${src})
+target_include_directories(ldline PRIVATE ${src/main})
 target_link_libraries(ldline lib_ldline)
 set_target_properties(ldline lib_ldline
         PROPERTIES
