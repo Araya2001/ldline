@@ -1,5 +1,5 @@
 # ldline
-A program for GNU/Linux to get, or erase, the last duplicated line of a file.
+A GNU/Linux program to get or exclude the last duplicated line of some sorted lines of a specified file.
 
 ## Installation
 
