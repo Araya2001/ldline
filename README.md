@@ -3,7 +3,7 @@ A program for GNU/Linux to get, or erase, the last duplicated line of a file.
 
 ## Installation
 
-How to install
+###### How to install
 
 ```
 $ git clone https://github.com/Araya2001/ldline.git
@@ -17,19 +17,19 @@ $ make install
 
 ## Usage
 
-How to get the last duplicated line of some sorted lines in a file
+###### How to get the last duplicated line of some sorted lines in a file
 
 ```
 $ ldline -s /path/to/file
 ```
 
-How to exclude the last duplicated line of some sorted lines in a file
+###### How to exclude the last duplicated line of some sorted lines in a file
 
 ```
 $ ldline -e /path/to/file
 ```
 
-How to compare from a specific character position, and from that specific position, compare a certain amount of characters
+###### How to compare from a specific character position, and from that specific position, compare a certain amount of characters
 
 *From position 1, compare 5 characters*
 
@@ -38,4 +38,24 @@ $ ldline -s -f 1 -c 5 /path/to/file
 ```
 
 *This example will compare the substring of the buffered lines and if the first 5 characters of the buffered line doesn't match with the current line, it will print the buffered line*
+
+###### Get help
+
+```
+$ ldline -?
+```
+
+###### Get version
+
+```
+$ ldline -V
+```
+
+## Additional
+
+If you want to use the command from any working directory, you might want to export the `bin` directory to path
+
+```
+$ export PATH="/path/to/ldline/bin:$PATH"
+```
 
