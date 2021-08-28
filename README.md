@@ -10,7 +10,7 @@ $ git clone https://github.com/Araya2001/ldline.git
 $ cd ldline
 $ cmake .
 $ make
-$ make install
+$ sudo make install
 ```
 
 *Note: You'll need `cmake` 3.20 or later*
