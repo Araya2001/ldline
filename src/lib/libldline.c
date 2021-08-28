@@ -21,22 +21,17 @@ void readLineErased(const char *filename, int optfrom, int optto) {
   int i = 0;
   char *line = NULL;
   struct linebuffer *lbp = malloc(sizeof(struct linebuffer));
-
   file = fopen(filename, "r");
-
   if (file == NULL) {
     exit(EXIT_FAILURE);
   }
-
   if (lbp == NULL) {
     exit(EXIT_FAILURE);
   }
-
   if (optfrom != 0 && optto != 0) {
     while ((read = getline(&line, &len, file) != -1)) {
       lbp[0].subcline = malloc(CHAR_MAX * sizeof(char));
       strncpy(lbp[0].subcline, &line[optfrom - 1], optto);
-
       switch (i) {
       case 0:
         lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
@@ -73,7 +68,6 @@ void readLineErased(const char *filename, int optfrom, int optto) {
         strcpy(lbp[0].rpas, line);
         strncpy(lbp[0].subrpas, &lbp[0].rpas[optfrom - 1], optto);
       }
-
       free(lbp[0].subcline);
       ++i;
     }
@@ -99,76 +93,82 @@ void readLineSaved(const char *filename, int optfrom, int optto) {
   int i = 0;
   char *line = NULL;
   struct linebuffer *lbp = malloc(sizeof(struct linebuffer));
-
   file = fopen(filename, "r");
-
   if (file == NULL) {
     exit(EXIT_FAILURE);
   }
-
   if (lbp == NULL) {
     exit(EXIT_FAILURE);
   }
-
   if (optfrom != 0 && optto != 0) {
     while ((read = getline(&line, &len, file) != -1)) {
       lbp[0].subcline = malloc(CHAR_MAX * sizeof(char));
       strncpy(lbp[0].subcline, &line[optfrom - 1], optto);
-
       if (i == 0) {
         lbp[0].pres = malloc(CHAR_MAX * sizeof(char));
         lbp[0].subpres = malloc(CHAR_MAX * sizeof(char));
         strcpy(lbp[0].pres, line);
         strncpy(lbp[0].subpres, &lbp[0].pres[optfrom - 1], optto);
       }
-
-      if (strcmp(lbp[0].subpres, lbp->subcline) != 0) {
-        printf("%s", lbp[0].rpas);
-        free(lbp[0].pres);
-        free(lbp[0].rpas);
-        free(lbp[0].subpres);
+      switch (i) {
+      case 0:
         lbp[0].pres = malloc(CHAR_MAX * sizeof(char));
-        lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
         lbp[0].subpres = malloc(CHAR_MAX * sizeof(char));
         strcpy(lbp[0].pres, line);
-        strcpy(lbp[0].rpas, line);
         strncpy(lbp[0].subpres, &lbp[0].pres[optfrom - 1], optto);
-      } else {
-        if (lbp[0].rpas) {
+        break;
+      default:
+        if (strcmp(lbp[0].subpres, lbp->subcline) != 0) {
+          printf("%s", lbp[0].rpas);
+          free(lbp[0].pres);
           free(lbp[0].rpas);
+          free(lbp[0].subpres);
+          lbp[0].pres = malloc(CHAR_MAX * sizeof(char));
+          lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
+          lbp[0].subpres = malloc(CHAR_MAX * sizeof(char));
+          strcpy(lbp[0].pres, line);
+          strcpy(lbp[0].rpas, line);
+          strncpy(lbp[0].subpres, &lbp[0].pres[optfrom - 1], optto);
+        } else {
+          if (lbp[0].rpas) {
+            free(lbp[0].rpas);
+          }
+          lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
+          strcpy(lbp[0].rpas, line);
         }
-        lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
-        strcpy(lbp[0].rpas, line);
+        break;
       }
       ++i;
       free(lbp[0].subcline);
     }
   } else {
     while ((read = getline(&line, &len, file) != -1)) {
-      if (i == 0) {
+      switch (i) {
+      case 0:
         lbp[0].pres = malloc(CHAR_MAX * sizeof(char));
         strcpy(lbp[0].pres, line);
-      }
-
-      if (strcmp(lbp[0].pres, line) != 0) {
-        printf("%s", lbp[0].rpas);
-        free(lbp[0].pres);
-        free(lbp[0].rpas);
-        lbp[0].pres = malloc(CHAR_MAX * sizeof(char));
-        lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
-        strcpy(lbp[0].pres, line);
-        strcpy(lbp[0].rpas, line);
-      } else {
-        if (lbp[0].rpas) {
+        break;
+      default:
+        if (strcmp(lbp[0].pres, line) != 0) {
+          printf("%s", lbp[0].rpas);
+          free(lbp[0].pres);
           free(lbp[0].rpas);
+          lbp[0].pres = malloc(CHAR_MAX * sizeof(char));
+          lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
+          strcpy(lbp[0].pres, line);
+          strcpy(lbp[0].rpas, line);
+        } else {
+          if (lbp[0].rpas) {
+            free(lbp[0].rpas);
+          }
+          lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
+          strcpy(lbp[0].rpas, line);
         }
-        lbp[0].rpas = malloc(CHAR_MAX * sizeof(char));
-        strcpy(lbp[0].rpas, line);
+        break;
       }
       ++i;
     }
   }
-
   printf("%s\n", lbp[0].rpas);
   fclose(file);
   if (line) {
