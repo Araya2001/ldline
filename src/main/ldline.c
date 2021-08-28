@@ -51,7 +51,7 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     }
     endptr = NULL;
     break;
-  case 't':
+  case 'c':
     if (strtol(arg, &endptr, base) != 0) {
       arguments->to = (int)strtol(arg, &endptr, base);
     } else {
