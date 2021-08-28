@@ -20,6 +20,4 @@ set_target_properties(ldline lib_ldline
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
         )
 
-install(TARGETS ldline
-        CONFIGURATIONS Release
-        RUNTIME DESTINATION Release/bin)
+install(TARGETS ldline)
