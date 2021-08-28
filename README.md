@@ -50,12 +50,3 @@ $ ldline -?
 ```
 $ ldline -V
 ```
-
-## Additional
-
-If you want to use the command from any working directory, you might want to export the `bin` directory to $PATH env
-
-```
-$ export PATH="/path/to/ldline/bin:$PATH"
-```
-
