@@ -95,11 +95,11 @@ int main(int argc, char *argv[]) {
   filename = arguments.arg[0];
 
   if (arguments.erasedupe == 1) {
-    readLineErased(filename, arguments.from, arguments.to);
+    readlineerased(filename, arguments.from, arguments.to);
   }
 
   if (arguments.showdupe == 1) {
-    readLineSaved(filename, arguments.from, arguments.to);
+    readlineerased(filename, arguments.from, arguments.to);
   }
 
   exit(0);
