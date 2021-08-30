@@ -3,8 +3,8 @@
 
 void hello(void);
 
-void readLineErased(const char *filename, int optfrom, int optto);
+void readlineerased(const char *filename, int optfrom, int optto);
 
-void readLineSaved(const char *filename, int optfrom, int optto);
+void readlinesaved(const char *filename, int optfrom, int optto);
 
 #endif // UNTITLED1_LIBRARY_H
