@@ -14,6 +14,10 @@ struct linebuffer {
   char *subcline; /*Current Line; Línea actual (Substring)*/
 };
 
+/*
+ * TODO: Check why does the strncpy and getsubstr substrings aren't equal
+ * when compared with strcmp
+ */
 void getsubstr(char *str, char *replace, size_t charpos, size_t charsize) {
   for (int i = charpos; i < charsize; ++i) {
     replace[i] = str[i];
