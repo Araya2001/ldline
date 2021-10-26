@@ -15,7 +15,7 @@ struct linebuffer {
 };
 
 /*
- * TODO: Check why does the strncpy and getsubstr substrings aren't equal
+ * TODO: Check why do the strncpy and getsubstr substrings aren't equal
  * when compared with strcmp
  */
 void getsubstr(char *str, char *replace, size_t charpos, size_t charsize) {
