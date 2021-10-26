@@ -1,0 +1,2 @@
+/usr/bin/ar qc target/lib/liblib_ldline.a CMakeFiles/lib_ldline.dir/src/lib/libldline.c.o
+/usr/bin/ranlib target/lib/liblib_ldline.a

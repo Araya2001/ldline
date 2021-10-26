@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ldline.dir/src/main/ldline.c.o -o target/bin/ldline  target/lib/liblib_ldline.a 
