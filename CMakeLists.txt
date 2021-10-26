@@ -4,9 +4,9 @@ project(ldline C)
 set(CMAKE_C_STANDARD 99)
 set(SOURCES src/main/ldline.c)
 set(HEADERS src/lib/libldline.h)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY target/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY target/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY target/bin)
 
 add_library(lib_ldline src/lib/libldline.c ${HEADERS})
 target_include_directories(lib_ldline PRIVATE ${src/lib})
@@ -15,9 +15,7 @@ target_include_directories(ldline PRIVATE ${src/main})
 target_link_libraries(ldline lib_ldline)
 set_target_properties(ldline lib_ldline
         PROPERTIES
-        ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+        ARCHIVE_OUTPUT_DIRECTORY "target/lib"
+        LIBRARY_OUTPUT_DIRECTORY "target/lib"
+        RUNTIME_OUTPUT_DIRECTORY "target/bin"
         )
-
-install(TARGETS ldline lib_ldline)
