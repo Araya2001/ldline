@@ -1,4 +1,0 @@
-/home/aaj/aaj_git/ldline/CMakeFiles/rebuild_cache.dir
-/home/aaj/aaj_git/ldline/CMakeFiles/edit_cache.dir
-/home/aaj/aaj_git/ldline/CMakeFiles/ldline.dir
-/home/aaj/aaj_git/ldline/CMakeFiles/lib_ldline.dir
